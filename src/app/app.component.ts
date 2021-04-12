@@ -30,8 +30,8 @@ export class AppComponent implements OnInit {
       var nextpage ='';
 
       
-
-      this.jsonData =  devicesArraytmp.threads.data;
+      this.deviceArray = devicesArraytmp.threads.data
+      this.jsonData = this.deviceArray ;
 
       this.nextpage =  devicesArraytmp.threads.paging.next;
 
@@ -53,13 +53,13 @@ export class AppComponent implements OnInit {
 
   public getJsonByClick(clickurl) {
     return this.http.get(clickurl).subscribe((devicesArraytmp) => {
-      console.log('data ', devicesArraytmp);
+      console.log('data ', devicesArraytmp.data);
       
       var nextpage ='';
 
       
-
-      this.jsonData =  this.jsonData.concat(devicesArraytmp.data);
+      this.deviceArray = this.deviceArray.concat(devicesArraytmp.data);
+      this.jsonData =  this.deviceArray
 
       this.nextpage =  devicesArraytmp.paging.next;
 
