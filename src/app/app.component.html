@@ -1,4 +1,5 @@
 {{ nextpage }}
-
-
+<button (click)="getJsonByClick(nextpage)" >call next page</button>
+<span>Round : {{ round }} </span>
+<span> Size : {{ count }} </span>
 {{ jsonData | json }}
