@@ -8,7 +8,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   public jsonData;
-  public nextpage = ''
+  public nextpage = '';
+  public count = 0;
+  public round = 0;
   private jsonUrl = 'https://graph.facebook.com/v10.0/507784162599885?fields=threads%7Bparticipants%2Cmessages.source(PARTICIPANTS).limit(1000)%7Btags%2Cmessage%7D%7D&access_token=EAAGFpZB6Ngn0BAMb8Oyu7ZBEW73TkH7fxrXDGA8JWkXuXQSPaQuuo33aM5DfZBWhIpZCL2h9B9Yk8ZAijdRa17ZAFNVLbEDzZBcT3RtnxkZBgRZAQnZARwY3khSReFNUIgvfl7AklI9RtMEbloAkyJhc3ZCwfcRoFPUaQQXoEXtO33EjKAkEAAPISdk2Ye5bLDgrcrvCVOKpMyUQYmxAimJPqd9'
   public deviceArray: [];
   public deviceArraytmp: [];
@@ -27,15 +29,15 @@ export class AppComponent implements OnInit {
       
       var nextpage ='';
 
-      this.devicesArray = devicesArraytmp.threads.data
-
-      this.jsonData = this.devicesArray;
-
-      thisnextpage =  devicesArraytmp.threads.paging.next;
-
       
 
+      this.jsonData =  devicesArraytmp.threads.data;
 
+      this.nextpage =  devicesArraytmp.threads.paging.next;
+
+      this.count = this.jsonData.length;
+
+     this.round = 1;
       
 
     
@@ -55,15 +57,15 @@ export class AppComponent implements OnInit {
       
       var nextpage ='';
 
-      this.devicesArray = devicesArraytmp.data
+      
 
-      this.jsonData = this.devicesArray;
+      this.jsonData =  this.jsonData.concat(devicesArraytmp.data);
 
       this.nextpage =  devicesArraytmp.paging.next;
 
       
-
-
+this.count = this.jsonData.length;
+     this.round = this.round + 1;
       
 
     
