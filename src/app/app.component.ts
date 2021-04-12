@@ -31,7 +31,35 @@ export class AppComponent implements OnInit {
 
       this.jsonData = this.devicesArray;
 
-      nextpage =  devicesArraytmp.threads.paging.next;
+      thisnextpage =  devicesArraytmp.threads.paging.next;
+
+      
+
+
+      
+
+    
+
+      for (let i = 0; i < this.jsonData.length; i++) {
+        // deviceArray.push(devices[i].lineId)
+        // this.deviceArray.push(this.deviceArray[i]);
+      }
+        console.log(this.deviceArray, " !!!!!!!!!!!!!!!!!");
+
+    });
+  }
+
+  public getJsonByClick(clickurl) {
+    return this.http.get(clickurl).subscribe((devicesArraytmp) => {
+      console.log('data ', devicesArraytmp);
+      
+      var nextpage ='';
+
+      this.devicesArray = devicesArraytmp.data
+
+      this.jsonData = this.devicesArray;
+
+      this.nextpage =  devicesArraytmp.paging.next;
 
       
 
